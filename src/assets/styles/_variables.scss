@@ -1,0 +1,23 @@
+@use "sass:color";
+
+// Fuentes
+$font-family-sans-serif: -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
+  "Helvetica Neue", arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol";
+$font-family-serif: "Georgia", "Times New Roman", serif;
+
+// Colores corporativos
+$uoc-corporate: #000078;
+$uoc-masterbrand: #73edff;
+$uoc-bg: color.scale($uoc-masterbrand, $lightness: 70%); // Fondo personalizado
+
+// Puntos de quiebre
+$mq-min-width: 420px; // Breakpoint para diseño responsive
+
+// Variables generales
+$body-bg: #f4f8fc; // Fondo claro
+$body-color: #2980b9; // Texto principal
+$primary: #2980b9; // Color principal
+$secondary: #6c757d; // Color secundario
+$spacer: 1rem; // Espaciado base
+$btn-border-radius: 0.5rem; // Bordes de botones redondeados

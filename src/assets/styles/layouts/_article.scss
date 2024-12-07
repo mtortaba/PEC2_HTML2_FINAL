@@ -1,0 +1,183 @@
+@use "sass:math";
+@import "../variables";
+
+
+/* Header */
+.header {
+  background-color: darken($body-bg, 10%);
+  padding: 1rem 2rem;
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $primary;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+
+    .nav-link {
+      text-decoration: none;
+      color: $primary;
+      font-size: 1rem;
+      font-weight: bold;
+
+      &:hover {
+        color: lighten($primary, 20%);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* Estilos para el artículo */
+.article {
+  padding: 2rem;
+
+  .article-header {
+    text-align: center;
+
+    .image-placeholder img {
+      max-width: 100%;
+      border-radius: $btn-border-radius;
+      margin-bottom: 1rem;
+    }
+
+    .article-title {
+      font-size: 2.5rem;
+      color: $primary;
+      margin-bottom: 1rem;
+    }
+
+    .author {
+      font-size: 1rem;
+      color: $secondary;
+
+      span {
+        font-weight: bold;
+        color: darken($primary, 10%);
+      }
+    }
+  }
+
+  .article-content {
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+
+    /* Selector con :is() para párrafos destacados */
+    p:is(.highlight) {
+      font-weight: bold;
+      color: $primary;
+    }
+
+    /* Selector con :has() para aplicar estilo a contenedores con listas */
+    ul:has(li) {
+      background-color: darken($primary, 2%);
+      padding: 2rem 2rem 2rem 4rem;
+      border-radius: $btn-border-radius;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 500px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    blockquote.highlight {
+      font-style: italic;
+      padding: 1rem;
+      margin: 2rem 0;
+      border-left: 5px solid $primary;
+      background-color: darken($primary, 2%);
+      color: darken($primary, 90%);
+    }
+
+    ul {
+      list-style-type: decimal;
+      margin-left: 2rem;
+
+      li {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .image-placeholder img {
+      max-width: 100%;
+      margin: 2rem 0;
+      border-radius: $btn-border-radius;
+    }
+  }
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: lighten($primary, 40%);
+  padding: $spacer;
+
+  p {
+    margin-bottom: math.div($spacer, 2);
+
+    /* margin-bottom: $spacer / 2; Da problemas en la compilación */
+    font-size: 1rem;
+    color: $secondary;
+  }
+
+
+  .footer-links {
+    display: flex;
+    gap: $spacer;
+    margin-bottom: $spacer;
+
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      color: $primary;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .social-links {
+    display: flex;
+    gap: $spacer;
+
+    .social-link {
+      padding: 0.5rem 1rem;
+      border: 1px solid $primary;
+      border-radius: $btn-border-radius;
+      text-decoration: none;
+      color: $primary;
+
+      @container (min-width: 600px) {
+        padding: 0.5rem 3rem;
+      }
+
+      &:hover {
+        background-color: $primary;
+        color: #fff;
+      }
+    }
+  }
+}

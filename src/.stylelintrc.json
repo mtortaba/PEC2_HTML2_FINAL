@@ -1,0 +1,27 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier"],
+  "plugins": ["stylelint-scss"],
+  "rules": {
+    "indentation": 2,
+    "max-nesting-depth": 4,
+    "color-hex-length": "short",
+    "selector-max-id": 1,
+    "declaration-no-important": null,
+    "string-quotes": "double",
+    "scss/at-rule-no-unknown": true,
+    "scss/dollar-variable-pattern": "^[a-z][a-z0-9-]*$",
+    "scss/selector-no-redundant-nesting-selector": true,
+    "scss/no-global-function-names": null,
+    "block-no-empty": true,
+    "no-descending-specificity": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["is", "has"]
+      }
+    ],
+    "font-family-no-missing-generic-family-keyword": true,
+    "length-zero-no-unit": true,
+    "declaration-block-trailing-semicolon": "always"
+  }
+}
