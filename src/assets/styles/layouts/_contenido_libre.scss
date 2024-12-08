@@ -3,6 +3,20 @@
 @import "../variables";
 @import "../leaflet.css";
 
+@layer base {
+  html {
+    /* navegadores antiguos */
+    height: 100vh;
+    width: 100vw;
+
+    /* Nuevas unidades dinámicas para navegadores modernos */
+    @supports (height: 100dvh) {
+      height: 100dvh;
+      width: 100dvw;
+    }
+  }
+}
+
 
 .header {
   background-color: color.adjust($body-bg, $lightness: -10%);
@@ -34,10 +48,8 @@
       font-weight: bold;
 
       &:hover {
-        $btn-primary-hover-bg: color.adjust($primary, $lightness: -10%);
-
-        /* color: color.adjust($primary, $lightness: 20%); */
-        background-color: color(display-p3 1 0.08 0); /* super red! */
+        // $btn-primary-hover-bg: color.adjust($primary, $lightness: -10%);
+        background-color: color(display-p3 0 0 0.8); /* Azul oscuro */
         text-decoration: underline;
       }
 
@@ -101,71 +113,72 @@
 
   .map-container {
     width: 100%;
-    height: 400px;
+    height: 50dvh; /* Altura adaptada al viewport dinámico */
+    max-height: 400px; /* Fallback */
     border-radius: $btn-border-radius;
     box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
   }
 
   #map {
-    height: 600px;
+    height: 60dvh; /* Altura adaptada al viewport dinámico */
     width: 100%;
   }
 }
 
-/* Footer */
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-color: color.adjust($primary, $lightness: 40%);
-  padding: $spacer;
-
-  p {
-    margin-bottom: math.div($spacer, 2);
-
-    /* margin-bottom: $spacer / 2; */
-    font-size: 1rem;
-    color: $secondary;
-  }
-
-  .footer-links {
+@layer layout {
+  /* Footer */
+  .footer {
     display: flex;
-    gap: $spacer;
-    margin-bottom: $spacer;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: color.adjust($primary, $lightness: 40%);
+    padding: $spacer;
 
-    a {
-      font-weight: bold;
-      text-decoration: none;
-      color: $primary;
+    p {
+      margin-bottom: math.div($spacer, 2);
+      font-size: 1rem;
+      color: $secondary;
+    }
 
-      &:hover {
-        text-decoration: underline;
+    .footer-links {
+      display: flex;
+      gap: $spacer;
+      margin-bottom: $spacer;
+
+      a {
+        font-weight: bold;
+        text-decoration: none;
+        color: $primary;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
-  }
 
-  .social-links {
-    display: flex;
-    gap: $spacer;
+    .social-links {
+      display: flex;
+      gap: $spacer;
 
-    .social-link {
-      padding: 0.5rem 1rem;
-      border: 1px solid $primary;
-      border-radius: $btn-border-radius;
-      text-decoration: none;
-      color: $primary;
+      /* Definimos container-type para usar consultas de contenedor */
+      container-type: normal;
 
-      @container (min-width: 600px) {
-        padding: 0.5rem 3rem;
-      }
+      .social-link {
+        padding: 0.5rem 1rem;
+        border: 1px solid $primary;
+        border-radius: $btn-border-radius;
+        text-decoration: none;
+        color: $primary;
 
-      &:hover {
-        $btn-primary-hover-bg: color.adjust($primary, $lightness: -10%);
+        @container (min-width: 600px) {
+          padding: 0.5rem 3rem;
+        }
 
-        /* color: color.adjust($primary, $lightness: 20%); */
-        background-color: color(display-p3 1 0.08 0); /* super red! */
-        color: #fff;
+        &:hover {
+          background-color: color(display-p3 0 0 0.8); /* Azul oscuro */
+          color: #fff;
+        }
       }
     }
   }

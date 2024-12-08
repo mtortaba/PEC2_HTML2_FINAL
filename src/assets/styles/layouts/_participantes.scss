@@ -2,6 +2,20 @@
 @use "sass:math";
 @import "../variables";
 
+@layer base {
+  html {
+    /* navegadores antiguos */
+    height: 100vh;
+    width: 100vw;
+
+    /* Nuevas unidades dinámicas para navegadores modernos */
+    @supports (height: 100dvh) {
+      height: 100dvh;
+      width: 100dvw;
+    }
+  }
+}
+
 .header {
   background-color: color.adjust($body-bg, $lightness: -10%);
   padding: 1rem 2rem;
@@ -130,6 +144,9 @@
   .social-links {
     display: flex;
     gap: $spacer;
+
+    /* Definimos container-type para usar consultas de contenedor */
+    container-type: normal;
 
     .social-link {
       padding: 0.5rem 1rem;
