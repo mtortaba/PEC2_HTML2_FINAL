@@ -71,6 +71,8 @@
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
+    container-type: inline-size;
+
 
     /* Container Queries que se incrementa con un ancho mínimo de 600px */
     @container (min-width: 600px) {
